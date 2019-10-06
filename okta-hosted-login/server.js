@@ -10,8 +10,8 @@
  * See the License for the specific language governing permissions and limitations under the License.
  */
 
-const sampleConfig = require('../config.js');
-const SampleWebServer = require('../common/sample-web-server');
+const sampleConfig = require("../config.js");
+const SampleWebServer = require("../common/sample-web-server");
 
 /**
  * Bootstrap the sample web server with the minimum required configuration to use the Okta-Hosted Login Page

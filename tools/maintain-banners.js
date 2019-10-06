@@ -10,12 +10,12 @@
  * See the License for the specific language governing permissions and limitations under the License.
  */
 
-const fs = require('fs');
-const globby = require('globby');
-const path = require('path');
+const fs = require("fs");
+const globby = require("globby");
+const path = require("path");
 
 const globs = process.argv.slice(2);
-const bannerSourcePath = path.join(__dirname, 'license-banner.txt');
+const bannerSourcePath = path.join(__dirname, "license-banner.txt");
 
 let files = [];
 
@@ -30,17 +30,23 @@ const firstYear = match[2];
 const currentYear = new Date().getFullYear().toString();
 
 if (firstYear !== currentYear) {
-  fs.writeFileSync(bannerSourcePath, bannerSource.replace(copyrightRegex, `$1$2-${currentYear}`));
+  fs.writeFileSync(
+    bannerSourcePath,
+    bannerSource.replace(copyrightRegex, `$1$2-${currentYear}`)
+  );
 }
 
 files.forEach(file => {
   const contents = fs.readFileSync(file).toString();
   const match = contents.match(copyrightRegex);
   if (!match) {
-    return fs.writeFileSync(file, bannerSource + '\n' + contents);
+    return fs.writeFileSync(file, bannerSource + "\n" + contents);
   }
   const firstYear = match[2];
   if (firstYear !== currentYear) {
-    return fs.writeFileSync(file, contents.replace(copyrightRegex, `$1$2-${currentYear}`));
+    return fs.writeFileSync(
+      file,
+      contents.replace(copyrightRegex, `$1$2-${currentYear}`)
+    );
   }
 });

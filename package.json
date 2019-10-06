@@ -11,11 +11,11 @@
   "homepage": "https://github.com/okta/samples-nodejs-express-4",
   "scripts": {
     "banners": "node tools/maintain-banners.js {common,custom-login,okta-hosted-login,resource-server,tools}/{*.js,**/*.js} ./*.js common/assets/css/samples.css",
-    "custom-login-server": "node custom-login/server.js",
+    "custom-login-server": "nodemon custom-login/server.js",
     "test:custom-login": "protractor okta-oidc-tck/e2e-tests/custom-login/conf.js",
     "okta-hosted-login-server": "node okta-hosted-login/server.js",
     "test:okta-hosted-login": "protractor okta-oidc-tck/e2e-tests/okta-hosted-login/conf.js",
-    "resource-server": "node resource-server/server.js",
+    "resource-server": "node resource-server/resource-server.js",
     "test:resource-server": "jasmine okta-oidc-tck/resource-server/specs/okta-resource-server-spec.js",
     "test": "npm run test:e2e",
     "test:e2e": "npm run test:okta-hosted-login && npm run test:custom-login && npm run test:resource-server",
@@ -23,7 +23,7 @@
     "webdriver-update-2.45": "webdriver-manager update --versions.standalone=3.141.59 --versions.chrome 2.45 --gecko false && node scripts/setup-env.js"
   },
   "devDependencies": {
-    "dotenv": "^5.0.1",
+    "dotenv": "^8.1.0",
     "find-process": "^1.1.0",
     "forever-monitor": "1.7.1",
     "jasmine": "^3.0.0",
@@ -39,6 +39,8 @@
     "cors": "^2.8.4",
     "express": "^4.14.0",
     "express-session": "^1.15.6",
-    "mustache-express": "^1.2.5"
+    "mustache-express": "^1.2.5",
+    "nodemon": "^1.19.3",
+    "ololog": "^1.1.149"
   }
 }
